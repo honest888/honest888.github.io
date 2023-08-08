@@ -1,24 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>honest</title>
-</head>
-<body>
-<div>
-	Hello developers!
-	Please use the chatbot.
-</div>	
-</body>
-<script>
-  window.chatbaseConfig = {
-    chatbotId: "StYGtxjCP4ebK1ErlmfIn",
-  }
-</script>
-<script
-  src="https://www.chatbase.co/embed.min.js"
-  id="StYGtxjCP4ebK1ErlmfIn"
-  defer>
-</script>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+        <style>
+            textarea {
+                overflow: hidden;
+                resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="background">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h1 class="text-center"></h1>
+
+                    <div class="center" id="center">
+                        <img src="./assets//logo.png" />
+                    </div>
+                    <button class="btn-reset" id="reset" onclick="resetChat()">
+                        <img
+                            id="resett"
+                            src="./assets/header-button-icon.svg"
+                            alt=""
+                        />
+                    </button>
+                </div>
+                <div id="chat-body" class="chat-body">
+                    <!-- received -->
+                    <div class="received message">
+                        <div class="imageText">
+                            <div class="incoming_msg_img">
+                                <img
+                                    src="./assets/chatbot.png"
+                                    alt="agentpic"
+                                />
+                            </div>
+                            <div class="received_withd_msg"><p>Hello</p></div>
+                        </div>
+                    </div>
+
+                    <!-- Add more messages here -->
+                </div>
+                <div class="chat-footer">
+                    <textarea
+                        id="prompt"
+                        type="text"
+                        placeholder="Type your message..."
+                        oninput="resizeTextarea(this,100); moveCursorToEnd(this);"
+                    ></textarea>
+                    <button id="send-button" onclick="sendPrompt()">
+                        <img src="./assets/button_send.png" alt="backbutton" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
+
+<script src="./script.js"></script>
+<script>
+    // ==================== Old code ===============
+    //
+    //
+    // function resizeTextarea(textarea) {
+    //     textarea.style.height = "";
+    //     textarea.style.height = textarea.scrollHeight + "px";
+    // }
+
+    // ============================
+    //
+    //
+
+    // ============================ New Code ===============
+    function resizeTextarea(textarea, maxHeight) {
+        textarea.style.height = "";
+        if (textarea.scrollHeight > maxHeight) {
+            textarea.style.height = maxHeight + "px";
+        } else {
+            textarea.style.height = textarea.scrollHeight + "px";
+        }
+    }
+
+    function moveCursorToEnd(textarea) {
+        textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+    }
+</script>
